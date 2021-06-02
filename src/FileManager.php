@@ -10,7 +10,7 @@ class FileManager
      * @param string $csvfile
      * @return array shapedlines
      */
-    public static function importFile($csvfile = null)
+    public static function importFile($csvfile = null): array
     {
         if (is_null($csvfile)) {
             throw new \RuntimeException('not found csv file.');
@@ -29,7 +29,7 @@ class FileManager
      * @param string $line
      * @return string
      */
-    private static function trimNewLineCharacter($line)
+    private static function trimNewLineCharacter($line): string
     {
         return str_replace(["\r\n","\r","\n"], '', $line);
     }
@@ -38,7 +38,7 @@ class FileManager
      * @param string $line
      * @return string
      */
-    private static function trimQuote($line)
+    private static function trimQuote($line): string
     {
         return str_replace('"', '', $line);
     }

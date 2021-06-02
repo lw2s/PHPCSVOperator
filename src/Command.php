@@ -19,8 +19,9 @@ class Command
 
     /**
      * @param array $parameters
+     * @return array
      */
-    public function search($parameters)
+    public function search($parameters): array
     {
         $parameterKeys = array_keys($parameters);
         $keys = array_keys($this->lines[0], $parameterKeys[0]);
@@ -36,8 +37,9 @@ class Command
 
     /**
      * @param array $parameter
+     * @return self
      */
-    public function group($parameter)
+    public function group($parameter): self
     {
         $line = array_column($this->lines, key($parameter));
         $key = array_keys($line, $parameter[key($parameter)]);
@@ -54,7 +56,7 @@ class Command
     /**
      * @return int
      */
-    public function countRow()
+    public function countRow(): int
     {
         if (isset($this->groupedLines)) {
             return count($this->groupedLines);
