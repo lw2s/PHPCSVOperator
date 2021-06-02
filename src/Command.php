@@ -91,7 +91,7 @@ class Command
         $filename = dirname(__dir__, 1) . '/export/exportJa.csv';
         $fp = fopen($filename, 'w');
         if ($fp == false) {
-            throw new Exception('can not open the file');
+            throw new \Exception('can not open the file');
         }
 
         foreach ($this->lines as $row) {
