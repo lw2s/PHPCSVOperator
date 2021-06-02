@@ -9,6 +9,9 @@ class Command
     private $lines;
     private $groupedLines;
 
+    /**
+     * @param array $lines
+     */
     public function __construct($lines)
     {
         $this->lines = $lines;
@@ -31,6 +34,9 @@ class Command
         }
     }
 
+    /**
+     * @param array $parameter
+     */
     public function group($parameter)
     {
         $line = array_column($this->lines, key($parameter));
@@ -45,6 +51,9 @@ class Command
         return $this;
     }
 
+    /**
+     * @return int
+     */
     public function countRow()
     {
         if (isset($this->groupedLines)) {

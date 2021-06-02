@@ -4,6 +4,12 @@ namespace PHPCSVOperator;
 
 class FileManager
 {
+    /**
+     * import csvfile
+     *
+     * @param string $csvfile
+     * @return array shapedlines
+     */
     public static function importFile($csvfile = null)
     {
         if (is_null($csvfile)) {
@@ -19,16 +25,28 @@ class FileManager
         return self::shape($lines);
     }
 
+    /**
+     * @param string $line
+     * @return string
+     */
     private static function trimNewLineCharacter($line)
     {
         return str_replace(["\r\n","\r","\n"], '', $line);
     }
 
+    /**
+     * @param string $line
+     * @return string
+     */
     private static function trimQuote($line)
     {
         return str_replace('"', '', $line);
     }
 
+    /**
+     * @param string $line
+     * @param string $header
+     */
     private static function linesToArray($line, $header): array
     {
         if (strpos($header[0], ';') !== false) {
@@ -46,6 +64,10 @@ class FileManager
         return $result;
     }
 
+    /**
+     * @param array $lines
+     * @return array $shapedLines
+     */
     public static function shape($lines): array
     {
         $shapedLines = [];
