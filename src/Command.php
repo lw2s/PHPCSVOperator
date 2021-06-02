@@ -18,6 +18,24 @@ class Command
     }
 
     /**
+     * @param $language string
+     * @return string $filename
+     */
+    private function getFilename($language = null): string
+    {
+        switch ($language) {
+            case 'ja':
+                $filename = dirname(__dir__, 1) . '/export/exportJa.csv';
+                break;
+            default:
+                $filename = dirname(__dir__, 1) . '/export/export.csv';
+                break;
+        }
+
+        return $filename;
+    }
+
+    /**
      * @param array $parameters
      * @return array
      */
@@ -70,8 +88,7 @@ class Command
      */
     public function export()
     {
-        $filename = dirname(__dir__, 1) . '/export/export.csv';
-        $fp = fopen($filename, 'w');
+        $fp = fopen($this->getFilename(), 'w');
         if ($fp == false) {
             throw new \Exception('can not open the file');
         }
@@ -88,8 +105,7 @@ class Command
      */
     public function exportJa()
     {
-        $filename = dirname(__dir__, 1) . '/export/exportJa.csv';
-        $fp = fopen($filename, 'w');
+        $fp = fopen($this->getFilename('ja'), 'w');
         if ($fp == false) {
             throw new \Exception('can not open the file');
         }
